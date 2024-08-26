@@ -55,6 +55,9 @@ preprocessing_pipeline.connect("document_splitter", "document_embedder")
 preprocessing_pipeline.connect("document_embedder", "document_writer")
 
 #Ingest the docs
+print(f"Input directory: {input_dir}")
+print(f"Files found: {list(Path(input_dir).glob('**/*'))}")
+print(f"Number of files: {len(list(Path(input_dir).glob('**/*')))}")
 res = preprocessing_pipeline.run({"file_type_router": {"sources": list(Path(input_dir).glob("**/*"))}})
 
 print(res)
